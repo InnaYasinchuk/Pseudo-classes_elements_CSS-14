@@ -8,6 +8,7 @@ desktop: '2560px' */
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  
 }
 
 body {
@@ -18,13 +19,17 @@ body {
 a {
   text-decoration: none;
 }
-a:hover {
+
+header a:hover {
   color: #46b1de;
-  font-weight: bold;
 }
 
-address {
+ul {
+  list-style: none;
   font-style: normal;
+}
+li {
+  margin-top: 15px;
 }
 
 .first-screen {
@@ -40,6 +45,7 @@ address {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 0 10px;
 }
 
 .logo {
@@ -62,11 +68,6 @@ p .img:hover {
   opacity: 0.5;
 }
 
-.img-header {
-  width: 22px;
-  height: 22px;
-}
-
 .tooth-header {
   max-width: 33px;
   max-height: 34px;
@@ -77,6 +78,19 @@ p .img:hover {
 .header-phone {
   font-size: 12px;
   color: #1b1d1f;
+  position: relative;
+}
+
+.header-phone::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: -20px;
+  width: 15px;
+  height: 15px;
+  background-image: url(../img/phone.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
 }
 
 .header-lang,
@@ -297,7 +311,14 @@ p .img:hover {
   margin: 9px 12px;
   text-align: center;
 }
+.form-title {
+  font-weight: 600;
+  line-height: 130%;
+  text-transform: uppercase;
+  margin: 20px auto 7px auto;
+}
 .form-discr {
+  line-height: 140%;
   margin: 20px auto;
 }
 
@@ -315,47 +336,45 @@ p .img:hover {
   display: block;
   margin: 0 auto;
 }
-.form-title {
-  font-weight: 600;
-  line-height: 130%;
-  text-transform: uppercase;
-  margin: 20px auto 7px auto;
-}
-.form-discr {
-  line-height: 140%;
-  margin-bottom: 20px;
-}
 
 .input {
-  display: flex;
-  width: 233px;
-  height: 57px;
-  background: rgba(217, 217, 217);
-  border-radius: 8px;
-  align-items: center;
-  justify-content: space-evenly;
-  margin: 10px auto;
+  position: relative;
 }
 
 .input-text {
-  max-width: 150px;
-  height: 55px;
+  width: 233px;
+  height: 57px;
   font-weight: 600;
   font-size: 19px;
   line-height: 140%;
   border: none;
-  background: rgba(217, 217, 217);
-  align-content: center;
+  border-radius: 8px;
+  background: rgba(217, 217, 217, 0.71);
+  padding-left: 70px;
+  margin: 5px auto;
+}
+
+.input-text:focus,
+.input-text:hover {
+  border: 2px solid #46b1de;
   outline: none;
 }
 
 .input-img {
   width: 24px;
+  height: 24px;
+  position: absolute;
+  top: calc(50% - 12px);
+  left: 10px;
 }
 
-.separator {
-  font-size: 30px;
-  margin-right: 3px;
+.input::before {
+  position: absolute;
+  content: "";
+  top: calc(50% - 15px);
+  left: 50px;
+  border-right: 2px solid black;
+  height: 30px;
 }
 
 .form-button {
@@ -370,12 +389,15 @@ p .img:hover {
   text-align: center;
   color: #ffffff;
   border: none;
+  margin: 5px auto;
 }
 
-.form-button:hover {
+.form-button:hover,
+.form-button:focus {
   background: #ffffff;
   color: #46b1de;
   border: 2px solid #46b1de;
+  outline: none;
 }
 
 .images {
@@ -420,6 +442,7 @@ p .img:hover {
   max-width: 400px;
   display: flex;
   justify-content: space-between;
+  
 }
 
 .footer-nav-items,
@@ -429,35 +452,90 @@ p .img:hover {
   margin: 15px 0;
   color: #0f2d4a;
 }
+p.footer-nav-items a{
+  color: #0f2d4a;
+}
+
+
+.footer-nav-items :hover {
+  color: white;
+}
 
 .address {
   font-size: 21px;
   line-height: 119%;
   margin: 44px auto 20px;
-}
-.phone,
-.email,
-.map,
-.contacts {
   color: white;
 }
-
-.whatsapp,
-.email,
-.insta {
-  margin-bottom: -7px;
-}
-
 .contact {
+  margin-top: 15px;
   font-size: 17px;
   line-height: 135%;
   color: white;
-  margin: 5px;
 }
+.phone,
+.email,
+.insta {
+  
+  position: relative;
+  padding-left: 40px;
+}
+.map {
+  position: relative;
+}
+
+.phone::before,
+.insta::before,
+.email::before {
+  position: absolute;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 28px;
+  height: 28px;
+  background-size: contain;
+}
+.phone::before {
+  background-image: url(../icon/phone.png);
+}
+.insta::before {
+  background-image: url(../icon/instagram.png);
+}
+.email::before {
+  background-image: url(../icon/email.png);
+}
+
+.phone:hover:after,
+.insta:hover::after,
+.email:hover::after,
+.map:hover::after {
+  position: absolute;
+  content: "";
+  top: 27px;
+  left: 35px;
+  width: 85%;
+  border-bottom: 1px solid #0f2d4a;
+}
+.map:hover::after {
+  left: 0;
+  width: 100%;
+}
+
+.whatsapp {
+  margin-bottom: -7px;
+}
+
 .copyright {
   font-size: 13px;
   margin: 10px 0 0 180px;
   line-height: 130%;
+  color: white;
+}
+li a:hover {
+  color: #0f2d4a;
+}
+.img:hover {
+  opacity: 0.5;
 }
 
 @media screen and (min-width: 768px) {
@@ -711,7 +789,7 @@ p .img:hover {
   }
 
   .header {
-    max-width: 1000px;
+    max-width: 1100px;
   }
 
   .logo {
@@ -755,11 +833,28 @@ p .img:hover {
     display: inline;
   }
 
-  .lang {
+  .lang,
+  .lang_en {
     font-size: 20px;
     line-height: 23px;
     color: #000000;
   }
+
+  .lang_en {
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .lang_en::before {
+    position: absolute;
+    content: "|";
+    top: 0;
+    left: 10px;
+    width: 20px;
+    color: #1b1d1f;
+    font-size: 20px;
+  }
+
   .main-section {
     display: flex;
     max-width: 1000px;
@@ -1016,62 +1111,12 @@ p .img:hover {
   .form {
     display: flex;
     justify-content: space-around;
+    align-items: center;
     flex-direction: row;
     max-width: 800px;
-    height: 57px;
+    max-height: 57px;
   }
 
-  .input {
-    display: flex;
-    width: 233px;
-    height: 57px;
-    background: rgba(217, 217, 217);
-    border-radius: 8px;
-    align-items: center;
-    justify-content: space-evenly;
-    margin: 0 auto;
-  }
-
-  .input-text {
-    max-width: 150px;
-    height: 55px;
-    font-weight: 600;
-    font-size: 19px;
-    line-height: 140%;
-    border: none;
-    background: rgba(217, 217, 217);
-    align-content: center;
-    outline: none;
-  }
-
-  .input-img {
-    width: 24px;
-  }
-
-  .separator {
-    font-size: 30px;
-    margin-right: 3px;
-  }
-
-  .form-button {
-    padding: 16px 35px;
-    width: 180px;
-    height: 57px;
-    background: #46b1de;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 19px;
-    line-height: 140%;
-    text-align: center;
-    color: #ffffff;
-    border: none;
-  }
-
-  .form-button:hover {
-    background: #ffffff;
-    color: #46b1de;
-    border: 2px solid #46b1de;
-  }
   .images {
     display: flex;
     max-width: 980px;
@@ -1139,30 +1184,8 @@ p .img:hover {
     line-height: 40px;
   }
 
-  .phone,
-  .email,
-  .map,
-  .contacts {
-    color: white;
-  }
-
-  .whatsapp,
-  .email,
-  .insta {
-    margin-bottom: -7px;
-  }
-
   .contact {
     font-size: 20px;
-    line-height: 135%;
-    color: white;
-    margin: 5px;
-  }
-
-  .copyright {
-    font-size: 13px;
-    margin: 10px 0 0 180px;
-    line-height: 130%;
   }
 }
 
@@ -1182,7 +1205,7 @@ p .img:hover {
   }
 
   .header {
-    max-width: 1080px;
+    max-width: 1200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1541,81 +1564,23 @@ p .img:hover {
   .border2 {
     max-width: 821px;
     min-height: 247px;
-    background: #ffffff;
-    border: 1px solid #d9d9d9;
-    border-radius: 10px;
-    margin: 9px 12px;
-    text-align: center;
   }
 
   .form-title {
-    font-weight: 600;
     font-size: 32px;
-    line-height: 130%;
-    text-transform: uppercase;
+
     margin: 30px auto 7px auto;
   }
 
   .form-discr {
     font-size: 16px;
-    line-height: 140%;
+
     margin-bottom: 44px;
   }
 
   .form {
     display: flex;
     justify-content: space-around;
-  }
-
-  .input {
-    display: flex;
-    width: 233px;
-    height: 57px;
-    background: rgba(217, 217, 217);
-    border-radius: 8px;
-    align-items: center;
-    justify-content: space-evenly;
-  }
-
-  .input-text {
-    max-width: 150px;
-    height: 55px;
-    font-weight: 600;
-    font-size: 19px;
-    line-height: 140%;
-    border: none;
-    background: rgba(217, 217, 217);
-    align-content: center;
-    outline: none;
-  }
-
-  .input-img {
-    width: 24px;
-  }
-
-  .separator {
-    font-size: 30px;
-    margin-right: 3px;
-  }
-
-  .form-button {
-    padding: 16px 35px;
-    width: 180px;
-    height: 57px;
-    background: #46b1de;
-    border-radius: 8px;
-    font-weight: 600;
-    font-size: 19px;
-    line-height: 140%;
-    text-align: center;
-    color: #ffffff;
-    border: none;
-  }
-
-  .form-button:hover {
-    background: #ffffff;
-    color: #46b1de;
-    border: 2px solid #46b1de;
   }
 
   .images {
@@ -1666,6 +1631,10 @@ p .img:hover {
     color: #0f2d4a;
   }
 
+    .footer-nav-items :hover{
+      color: white;
+    }
+
   .footer-nav-workingHours {
     margin-top: 25px;
   }
@@ -1683,30 +1652,7 @@ p .img:hover {
     line-height: 40px;
   }
 
-  .phone,
-  .email,
-  .map,
-  .contacts {
-    color: white;
-  }
-
-  .whatsapp,
-  .email,
-  .insta {
-    margin-bottom: -7px;
-  }
-
   .contact {
     font-size: 20px;
-    line-height: 135%;
-    color: white;
-    margin: 5px;
   }
-
-  .copyright {
-    font-size: 13px;
-    margin: 10px 0 0 180px;
-    line-height: 130%;
-  }
-  
 }
